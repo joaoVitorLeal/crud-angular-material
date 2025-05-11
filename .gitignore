@@ -1,0 +1,52 @@
+# Build outputs
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Dependencies
+/node_modules
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# VS Code
+.vscode/*
+
+# VS Code history plugin (optional, pode remover se não usar)
+/.history/
+
+# Angular cache
+/.angular/cache
+
+# Coverage reports
+/coverage
+
+# Sass cache
+.sass-cache/
+
+# Lock files (comente se quiser versionar package-lock.json)
+/package-lock.json
+/yarn.lock
+/pnpm-lock.yaml
+
+# Others
+/connect.lock
+/libpeerconnection.log
+/testem.log
+/typings
+
+# OS-specific files
+.DS_Store
+Thumbs.db
