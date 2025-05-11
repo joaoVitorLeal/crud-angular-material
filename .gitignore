@@ -36,8 +36,7 @@ pnpm-debug.log*
 # Sass cache
 .sass-cache/
 
-# Lock files (comente se quiser versionar package-lock.json)
-/package-lock.json
+# Lock files
 /yarn.lock
 /pnpm-lock.yaml
 
