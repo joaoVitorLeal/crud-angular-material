@@ -11,20 +11,20 @@ export class ClientService {
   constructor() { }
 
   save(client: Client): void {
-    const storage = this.getStorage();
-    storage.push(client);
+    const clients = this.getStorage();
+    clients.push(client);
 
-    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(storage));
+    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients));
   }
 
   search(searchName: string): Client[] {
-    const data = this.getStorage();
+    const clients = this.getStorage();
     
     if (!searchName) {
-      return data;
+      return clients;
     }
 
-    return data.filter(client => 
+    return clients.filter(client => 
       client.name
       ?.normalize("NFD") // Separa os caracteres acentuados (ex: "é" vira "e" + acento)
       .replace(/[\u0300-\u036f]/g, "") // Remove os acentos usando regex
@@ -44,16 +44,13 @@ export class ClientService {
   }
 
   update(client: Client): void {
-    // const data = this.getStorage();
-    // const foundClient = data.find(c => c === client);
-    // if (foundClient) {
-    //   foundClient.name = client.name;
-    //   foundClient.email = client.email;
-    //   foundClient.cpf = client.cpf;
-    //   foundClient.birthDate = client.birthDate;
-
-    //   this.save(foundClient);
-    // }
+    const clients = this.getStorage();
+    clients.forEach(c => {
+      if (c.id === client.id) {
+        Object.assign(c, client); // assign(para este objeto (c), substitua-o por este outro objeto (client)) – // Atualiza o objeto 'c' com os dados de 'client', substituindo os valores correspondentes
+      }
+    });
+    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients))
   }
 
   private getStorage(): Client[] {
