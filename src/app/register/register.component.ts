@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Client } from './client';
 import { ClientService } from '../client.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'
 
  
 @Component({
@@ -20,7 +21,10 @@ import { ActivatedRoute, Router } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxMaskDirective
+  ], providers: [
+    provideNgxMask()
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
