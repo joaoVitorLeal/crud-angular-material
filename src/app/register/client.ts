@@ -4,7 +4,7 @@ export class Client {
     id?: string;
     name?: string;
     cpf?: string;
-    bithDate?: string;
+    birthDate?: string;
     email?: string;
 
  

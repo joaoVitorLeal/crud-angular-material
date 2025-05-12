@@ -1,3 +1,13 @@
 .spacer {
     flex: 1 1 auto
 }
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 3.5vh;
+    
+    &:hover {
+        opacity: 0.82;
+    }
+}
