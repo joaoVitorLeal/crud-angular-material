@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, inject } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar } from '@angular/material/snack-bar'
 import { Client } from './client';
 import { ClientService } from '../client.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -33,6 +34,7 @@ export class RegisterComponent implements OnInit {
 
   client: Client = Client.newClient();
   isUpdating: boolean = false;
+  private _snackBar: MatSnackBar = inject(MatSnackBar);
 
   constructor(
     private clientService: ClientService,
@@ -60,9 +62,15 @@ export class RegisterComponent implements OnInit {
     if (!this.isUpdating) {
       this.clientService.save(this.client);
       this.client = Client.newClient(); // Limpa os dados do cliente atual para preparar para um novo cadastro
+      this.showSnackBar("Salvo com sucesso!");
     } else {
       this.clientService.update(this.client);
       this.router.navigate(['/search']);
+      this.showSnackBar("Atualizado com sucesso!");
     }
+  }
+
+  private showSnackBar(message: string): void {
+    this._snackBar.open(message, "Ok")
   }
 }

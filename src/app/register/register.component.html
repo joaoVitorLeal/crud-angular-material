@@ -3,8 +3,9 @@
         <form class="mt-60" #clientsFrm="ngForm" (ngSubmit)="save()">
             <mat-card>
                 <mat-card-header>Dados Pessoais</mat-card-header>
+                <!-- Fields: -->
                 <mat-card-content class="mt-20">
-
+                    <!-- Name -->
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
                         <div fxLayout="column" fxFlex="800px">
                             <mat-form-field class="full-width">
@@ -18,6 +19,7 @@
                         </div>
                     </div>
 
+                    <!-- E-mail -->
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
                         <div fxLayout="column" fxFlex="800px">
                             <mat-form-field class="full-width">
@@ -30,7 +32,8 @@
                             </mat-form-field>
                         </div>
                     </div>
-                    
+
+                    <!-- CPF -->
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
                         <div fxLayout="column" fxFlex="400px">
                             <mat-form-field class="full-width">
@@ -38,12 +41,14 @@
                                 <input type="text"
                                        [(ngModel)]="client.cpf"
                                        name="cpf"
+                                       mask="000.000.000-00"
                                        placeholder="Digite seu CPF"
                                        matInput />
                             </mat-form-field>
                         </div>
                     </div>
-
+            
+                    <!-- Birth Date -->
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
                         <div fxLayout="column" fxFlex="400px">
                             <mat-form-field class="full-width">
@@ -51,6 +56,7 @@
                                 <input type="text"
                                        [(ngModel)]="client.birthDate"
                                        name="birthDate"
+                                       mask="00/00/0000"
                                        placeholder="Digite sua data de nascimento" matInput />
                             </mat-form-field>
                         </div>
