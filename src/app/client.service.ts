@@ -50,7 +50,44 @@ export class ClientService {
         Object.assign(c, client); // assign(para este objeto (c), substitua-o por este outro objeto (client)) – // Atualiza o objeto 'c' com os dados de 'client', substituindo os valores correspondentes
       }
     });
-    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients))
+    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients));
+  }
+
+  delete(client: Client): void {
+    const clients = this.getStorage();
+    const newList = clients.filter(c => c.id !== client.id);
+    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(newList));
+  }
+
+  /**
+   * @deprecated Use o método delete() com filter() em vez deste.
+   * Demonstra uma abordagem alternativa de remoção, modificando o array original.
+   */
+  deleteManuallyFromList(client: Client): void {
+    const clients = this.getStorage();
+
+    const index = clients.indexOf(client);
+    if (index > -1) {
+      clients.splice(index, 1);
+    }
+
+    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients));
+  }
+
+
+  /**
+   * @deprecated Use o método `delete()` com `filter()` no lugar deste.
+   * Este método altera diretamente o array original, o que não é uma boa prática.
+   */
+  deleteWithSplice(client: Client): void {
+    console.warn("deleteComSplice está obsoleto. Use o método 'delete' com filter().");
+
+    const clients = this.getStorage();
+    const index = clients.indexOf(client);
+    if (index > -1) {
+      clients.splice(index, 1);
+    }
+    localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients));
   }
 
   private getStorage(): Client[] {
@@ -59,10 +96,8 @@ export class ClientService {
       const clients: Client[] = JSON.parse(clientRepository);
       return clients;
     }
-
     const clients: Client[] = [];
     localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients));
     return clients;
   }
-
 }

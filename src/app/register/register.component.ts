@@ -28,7 +28,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   client: Client = Client.newClient();
-  updated: boolean = false;
+  isUpdating: boolean = false;
 
   constructor(
     private clientService: ClientService,
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       if (id) {
         let foundClient = this.clientService.findById(id);
         if (foundClient) {
-          this.updated = true;
+          this.isUpdating = true;
           this.client = foundClient;
         }
       }
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
   }
   
   save(): void {
-    if (!this.updated) {
+    if (!this.isUpdating) {
       this.clientService.save(this.client);
       this.client = Client.newClient(); // Limpa os dados do cliente atual para preparar para um novo cadastro
     } else {

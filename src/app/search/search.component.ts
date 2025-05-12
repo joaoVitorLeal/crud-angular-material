@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
 
   searchName: string = '';
   clientList: Client[] = [];
-  tableColumns: string[] = ["id", "name", "cpf", "birthDate", "email", "actions"]; 
+  tableColumns: string[] = ["id", "name", "cpf", "birthDate", "email", "actions"];
   
   constructor(
     private clientService: ClientService,
@@ -46,7 +46,16 @@ export class SearchComponent implements OnInit {
   }
 
   // Navegar entre páginas
-  prepareEdit(id: string) {
+  prepareEdit(id: string): void {
     this.router.navigate(['/register'], { queryParams: { "id": id } }) // navigate(['/rota/de/destino'], parâmetros) • Navega para a página de cadastro carregando o cliente com o ID informado
+  }
+
+  prepareDelete(client: Client): void {
+    client.isDeleting = true;
+  }
+
+  delete(client: Client): void {
+    this.clientService.delete(client);
+    this.clientList = this.clientService.search('');
   }
 }

@@ -68,7 +68,7 @@
                             <td mat-cell *matCellDef="let client">{{ client.email }}</td>
                         </ng-container> 
 
-                        <!-- Actions – Edit  -->
+                        <!-- Actions – Edit, Delete -->
                         <ng-container matColumnDef="actions">
                             <th mat-header-cell *matHeaderCellDef></th>
                             <td mat-cell *matCellDef="let client">
@@ -76,8 +76,20 @@
                                     <mat-icon fontIcon="edit"></mat-icon>
                                     Editar
                                 </button>
+
+                                @if (!client.isDeleting) {
+                                    <button type="button" mat-button (click)="prepareDelete(client)">
+                                        <mat-icon fontIcon="delete"></mat-icon>
+                                        Delete
+                                    </button>                                
+                                } @else {
+                                    <button type="button" mat-button (click)="delete(client)">
+                                        <mat-icon fontIcon="question_mark"></mat-icon>
+                                        Confirmar
+                                    </button>                                      
+                                }
                             </td>
-                        </ng-container> 
+                        </ng-container>
 
                         <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
                         <tr mat-row *matRowDef="let row; columns: tableColumns"></tr>

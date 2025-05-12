@@ -6,6 +6,7 @@ export class Client {
     cpf?: string;
     birthDate?: string;
     email?: string;
+    isDeleting: boolean = false;
 
  
     static newClient(): Client {
