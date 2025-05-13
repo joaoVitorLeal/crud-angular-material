@@ -1,59 +1,114 @@
 # CrudAngularMaterial
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.2.
+Aplicação Angular para gerenciamento de dados de clientes utilizando Angular Material e Flex Layout. Funcionalidades principais:
 
-## Development server
+- Cadastro de clientes
+- Armazenamento local usando `localStorage`
+- Integração com a [BrasilAPI](https://brasilapi.com.br/) para carregar automaticamente estados e cidades do Brasil
+- Layout responsivo com Flex Layout
+- Pesquisa e exclusão de clientes com confirmação
 
-To start a local development server, run:
+## Rotas Disponíveis
 
-```bash
+- http://localhost:4200/register – Cadastro ou edição de cliente
+- http://localhost:4200/search – Busca e gerenciamento de clientes cadastrados
+
+## Primeiros Passos
+
+### Servidor de Desenvolvimento
+
+Execute o servidor de desenvolvimento com:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Abra o navegador em http://localhost:4200/. A aplicação será recarregada automaticamente ao alterar os arquivos.
 
-## Code scaffolding
+### Build
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Para compilar o projeto:
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
 ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Os arquivos finais serão gerados na pasta dist/.
 
-## Running unit tests
+## Tecnologias Utilizadas
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Angular 19
+- Angular Material
+- Flex Layout
+- API do navegador localStorage
+- BrasilAPI (endpoints do IBGE)
 
-```bash
-ng test
-```
+## Funcionalidades do Formulário
 
-## Running end-to-end tests
+- Campo de CPF com máscara
+- Data de nascimento com máscara (DD/MM/AAAA)
+- Carregamento automático de estados e cidades
+- Validação de e-mail
+- Geração de ID único com UUID
 
-For end-to-end (e2e) testing, run:
+## Observações para Desenvolvedores
 
-```bash
-ng e2e
-```
+Este projeto utiliza ngModel para binding bidirecional e armazena os dados do cliente de forma persistente no navegador via localStorage.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Licença
 
-## Additional Resources
+Este projeto é open source e pode ser utilizado livremente para aprendizado e evolução.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+# CrudAngularMaterial
+
+An Angular application for managing client data using Angular Material and Flex Layout. It includes features such as:
+
+- Client registration with form
+- Local data storage using `localStorage`
+- Integration with [BrasilAPI](https://brasilapi.com.br/) to auto-populate Brazilian states and cities
+- Responsive layout using Flex Layout
+- Data search and deletion with confirmation
+
+## Available Routes
+
+- http://localhost:4200/register – Register or edit client data
+- http://localhost:4200/search – Search and manage registered clients
+
+## Getting Started
+
+### Development server
+
+Run the development server:
+
+ng serve
+
+Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+
+### Build
+
+To compile the project:
+
+ng build
+
+The build artifacts will be stored in the dist/ directory.
+
+## Technologies
+
+- Angular 19
+- Angular Material
+- Flex Layout
+- localStorage API
+- BrasilAPI (IBGE endpoints)
+
+## Client Form Features
+
+- CPF field with input mask
+- Birth date with input mask (DD/MM/YYYY)
+- Auto-load Brazilian states and cities
+- Email validation
+- Unique ID generation using UUID
+
+## Developer Notes
+
+This project uses ngModel for two-way data binding and stores client data persistently in the browser using localStorage.
+
+## License
+
+This project is open source and free to use for learning and improvement.
