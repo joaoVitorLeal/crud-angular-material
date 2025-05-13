@@ -12,3 +12,4 @@ ng generate component register
 ng generate component search
 
 ng generate service client
+ng generate service brazilApi
