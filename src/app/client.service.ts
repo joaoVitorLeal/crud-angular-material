@@ -11,6 +11,11 @@ export class ClientService {
   constructor() { }
 
   save(client: Client): void {
+    // Formatar a data de nascimento antes de persistir
+    if (client.birthDate) {
+      client.birthDate = this.formatDate(client.birthDate);
+    }
+
     const clients = this.getStorage();
     clients.push(client);
 
@@ -44,6 +49,11 @@ export class ClientService {
   }
 
   update(client: Client): void {
+    // Formatar a data de nascimento antes de persistir
+    if (client.birthDate) {
+      client.birthDate = this.formatDate(client.birthDate);
+    }    
+
     const clients = this.getStorage();
     clients.forEach(c => {
       if (c.id === client.id) {
@@ -99,5 +109,16 @@ export class ClientService {
     const clients: Client[] = [];
     localStorage.setItem(ClientService.CLIENT_REPOSITORY_KEY, JSON.stringify(clients));
     return clients;
+  }
+
+    private formatDate(date: string): string {
+      if (!date) return date;
+      const cleanedDate = date.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+
+      // Aplica a máscara no formato dd/MM/yyyy
+      if (cleanedDate.length === 8) {
+        return `${cleanedDate.substring(0, 2)}/${cleanedDate.substring(2, 4)}/${cleanedDate.substring(4, 8)}`;
+      }
+      return date; // Retorna o valor sem formatação caso a quantidade de caracteres não seja 8
   }
 }
