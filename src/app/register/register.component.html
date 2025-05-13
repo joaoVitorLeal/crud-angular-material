@@ -3,8 +3,8 @@
         <form class="mt-60" #clientsFrm="ngForm" (ngSubmit)="save()">
             <mat-card>
                 <mat-card-header>Dados Pessoais</mat-card-header>
-                <!-- Fields: -->
                 <mat-card-content class="mt-20">
+                    <!-- Fields: -->
                     <!-- Name -->
                     <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
                         <div fxLayout="column" fxFlex="800px">
@@ -61,6 +61,30 @@
                             </mat-form-field>
                         </div>
                     </div>
+
+                    <!-- UF (State) -->
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+                        <div fxLayout="column" fxFlex="400px">
+                            <mat-form-field class="full-width">
+                                <mat-label>UF: *</mat-label>
+                                <mat-select [(value)]="client.stateAbbreviation" (selectionChange)="loadCities($event)">
+                                    <mat-option *ngFor="let uf of states" [value]="uf.sigla">{{ uf.sigla }} – {{ uf.nome }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>    
+                    
+                    <!-- City -->
+                    <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+                        <div fxLayout="column" fxFlex="400px">
+                            <mat-form-field class="full-width">
+                                <mat-label>Município: *</mat-label>
+                                <mat-select [(value)]="client.city"> <!-- Atribui o valor selecionado ao atributo 'city' do objeto 'client' -->
+                                    <mat-option *ngFor="let city of cities" [value]="city.nome">{{ city.nome }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>  
                     
                 </mat-card-content>
                 <mat-card-actions>
