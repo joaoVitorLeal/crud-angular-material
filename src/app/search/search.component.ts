@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsModule } from "@angular/forms";
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ClientService } from '../client.service';
 import { Client } from '../register/client';
 import { Router } from '@angular/router';
+import { CpfPipe } from '../pipes/cpf.pipe';
 
 @Component({
   selector: 'app-search',
@@ -22,7 +23,8 @@ import { Router } from '@angular/router';
     MatTableModule,
     FlexLayoutModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    CpfPipe
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
@@ -31,7 +33,7 @@ export class SearchComponent implements OnInit {
 
   searchName: string = '';
   clientList: Client[] = [];
-  tableColumns: string[] = ["id", "name", "cpf", "birthDate", "email", "actions"];
+  tableColumns: string[] = ["id", "name", "cpf", "birthDate", "email", "state", "city", "actions"];
   private _snackBar: MatSnackBar = inject(MatSnackBar);
   
   constructor(

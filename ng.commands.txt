@@ -7,9 +7,11 @@ ng add uuid@11.0.2
 ng add ngx-mask@19.0.0
 
 
- – Creater Components and Services:
+ – Creater Components, Services, Pipes:
 ng generate component register
 ng generate component search
 
 ng generate service client
 ng generate service brazilApi
+
+ng generate pipe pipes/cpf

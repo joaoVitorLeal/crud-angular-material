@@ -55,7 +55,7 @@
                         <!-- CPF -->
                         <ng-container matColumnDef="cpf">
                             <th mat-header-cell *matHeaderCellDef>CPF</th>
-                            <td mat-cell *matCellDef="let client">{{ client.cpf }}</td>
+                            <td mat-cell *matCellDef="let client">{{ client.cpf | cpf }}</td>
                         </ng-container>
                         <!-- BirthDate -->
                         <ng-container matColumnDef="birthDate">
@@ -66,8 +66,18 @@
                         <ng-container matColumnDef="email">
                             <th mat-header-cell *matHeaderCellDef>E-mail</th>
                             <td mat-cell *matCellDef="let client">{{ client.email }}</td>
-                        </ng-container> 
-
+                        </ng-container>
+                        <!-- UF (State) -->
+                        <ng-container matColumnDef="state">
+                            <th mat-header-cell *matHeaderCellDef>UF</th>
+                            <td mat-cell *matCellDef="let client">{{ client.stateAbbreviation }}</td>
+                        </ng-container>
+                        <!-- City -->
+                        <ng-container matColumnDef="city">
+                            <th mat-header-cell *matHeaderCellDef>Município</th>
+                            <td mat-cell *matCellDef="let client">{{ client.city }}</td>
+                        </ng-container>                                                
+                        
                         <!-- Actions – Edit, Delete -->
                         <ng-container matColumnDef="actions">
                             <th mat-header-cell *matHeaderCellDef></th>
